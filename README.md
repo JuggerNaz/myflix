@@ -1,2 +1,2 @@
-# nextjs-with-styled-component-and-rebass-boilerplate
-A starter kit / boilerplate for NextJS with Styled-Component and Rebass, covering simple yet standard landing page and admin dashboard to kick start a project.
+# MyFlix
+This is just an example project for Frontend UI test.
