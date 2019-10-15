@@ -20,7 +20,7 @@ export default class MyApp extends App {
         return (
             <Container>
                 <Head>
-                    <title>My new cool app</title>
+                    <title>myFlix</title>
                     <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700,900&display=swap" rel="stylesheet" />
                 </Head>
                 <Component {...pageProps} />

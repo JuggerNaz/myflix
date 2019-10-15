@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Box } from 'rebass'
+import { Flex, Box, Text, Card, Image } from 'rebass'
 import { QuoteAltLeft, QuoteAltRight } from 'styled-icons/boxicons-solid/'
+import fetch from 'isomorphic-unfetch'
+import Slider from 'react-slick'
  
 //local
 import Home from '../src/components/layout/Home'
@@ -11,6 +13,11 @@ import Title from '../src/components/core/Title'
 import RoundButton from '../src/components/core/RoundButton'
 import RegisterForm from '../src/components/layout/RegisterForm'
 import Footer from '../src/components/layout/Footer'
+import SubTitle from '../src/components/core/SubTitle'
+
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import '../src/static/index.css'
 
 const StyledBox = styled(Flex)`
     height: 250px;
@@ -62,138 +69,101 @@ const QuoteAvatar = styled(Flex)`
     color: #fff;
 `
 
-export default () => (
-    <Home>
-        <Header />
-        <Row>
-            <Container
-                flexDirection='row'
-                justifyContent='space-between'
-                py={3}
-            >
-                <Flex
-                    flexDirection='column'
-                >
-                    <Title text='How we do it?' />
-                    <Flex
-                        mb={3}
+const ShowContainer = styled(Container)`
+    border-top: 2px solid #480E87;
+    border-bottom: 2px solid #480E87;
+    border-radius: 5px;
+    background-color: #ececec;
+`
+
+const Index = props => {
+    console.log(props.shows)
+    function getImageUrl(images){
+        const imageUrl = images.filter(image => { return image.type == 'POSTER' })
+        return imageUrl[0].url
+    }
+    const settings = {
+        slidesToShow: 5,
+        slidesToScroll: 5
+    }
+    return(
+        <Home>
+            <Header />
+           
+            {
+                props.shows.map(show =>(
+                    <Row
+                        my={2}
                     >
-                        <Box
-                            width={1/3}
+                        <ShowContainer
+                            flexDirection='column'
+                            p={2}
                         >
-                            <RoundButton>1</RoundButton>
-                        </Box>
-                        <Box
-                            width={2/3}
-                        >
-                            See each other
-                        </Box>
-                    </Flex>
-                    <Flex
-                        mb={3}
-                    >
-                        <Box
-                            width={1 / 3}
-                        >
-                            <RoundButton>2</RoundButton>
-                        </Box>
-                        <Box
-                            width={2 / 3}
-                        >
-                            Greet each other
-                        </Box>
-                    </Flex>
-                    <Flex
-                        mb={3}
-                    >
-                        <Box
-                            width={1 / 3}
-                        >
-                            <RoundButton>3</RoundButton>
-                        </Box>
-                        <Box
-                            width={2 / 3}
-                        >
-                            Shake hand each other
-                        </Box>
-                    </Flex>
-                </Flex>
-                <Flex
-                    width={[1, '400px']}
-                    marginTop={['-60px']}
-                >
-                    <RegisterForm />
-                </Flex>
-            </Container>
-        </Row>
-        <Row
-        >
-            <Container
-                flexDirection='column'
-                justifyContent='center'
-                py={4}
-            >
-                <Row>
-                    <Title text='Testimoni' />
-                </Row>
-                <Row>
-                    <StyledBox
-                        mx={3}
-                        my={3}
-                        px={3}
-                        py={5}
-                    >
-                        <IconQuoteLeft />
-                        Assalamualaikum ya akhi ya ukhti
-                        Assalamualaikum ya akhi ya ukhti
-                        Assalamualaikum ya akhi ya ukhti
-                    <IconQuoteRight />
-                        <QuoteAvatar
-                            alignItems='center'
-                            justifyContent='center'
-                        >
-                            NM
-                    </QuoteAvatar>
-                    </StyledBox>
-                    <StyledBox
-                        mx={3}
-                        my={3}
-                        px={3}
-                        py={5}
-                    >
-                        <IconQuoteLeft />
-                        Assalamualaikum ya akhi ya ukhti
-                        Assalamualaikum ya akhi ya ukhti
-                        Assalamualaikum ya akhi ya ukhti
-                    <IconQuoteRight />
-                        <QuoteAvatar
-                            alignItems='center'
-                            justifyContent='center'
-                        >
-                            AJ
-                    </QuoteAvatar>
-                    </StyledBox>
-                    <StyledBox
-                        mx={3}
-                        my={3}
-                        px={3}
-                        py={5}
-                    >
-                        <IconQuoteLeft />
-                        Assalamualaikum ya akhi ya ukhti
-                        Assalamualaikum ya akhi ya ukhti
-                        Assalamualaikum ya akhi ya ukhti
-                    <IconQuoteRight />
-                        <QuoteAvatar
-                            alignItems='center'
-                            justifyContent='center'
-                        >
-                            SH
-                    </QuoteAvatar>
-                    </StyledBox>
-                </Row>
-            </Container>
-        </Row>
-        <Footer />
-    </Home>
-)
+                            <Flex
+                                width={[1]}
+                            >
+                                <SubTitle
+                                    as='h2'
+                                    fontFamily='nunito'
+                                    fontSize='18px'
+                                    color='#480E87'
+                                    text={show.row_name}
+                                />
+                            </Flex>
+                            <Flex
+                                width={['95%']}
+                                height={[250]}
+                                px={2}
+                                flexDirection='column'
+                                justifyContent='center'
+                                mx={'auto'}
+                            >
+                                <Slider {...settings}>
+                                    {
+                                        show.data.map(movie => (
+                                            // <Flex>
+                                            //     <Card width={[150, 250]} mx={1}>
+                                            //         <Image src={getImageUrl(movie.images)} />
+                                            //         <Text>
+                                            //             {movie.title}
+                                            //         </Text>
+                                            //     </Card>
+                                            // </Flex>
+                                            <Flex
+                                                justifyContent='center'
+                                            >
+                                                <Image height={150} src={getImageUrl(movie.images)} />
+                                                <Text
+                                                    textAlign='center'
+                                                >
+                                                    {movie.title}
+                                                </Text>
+                                            </Flex>
+                                            
+                                        ))
+                                    }
+                                </Slider>
+                            </Flex>
+                        </ShowContainer>
+                    </Row>
+                ))
+
+            }
+            <Footer />
+        </Home>
+    )
+}
+
+Index.getInitialProps = async function(){
+    const res = await fetch('https://cdn-discover.hooq.tv/v1.2/discover/feed?region=ID&page=1&perPage=20')
+    const data = await res.json()
+
+    return {
+        shows: data.data.map(entry => {
+            if (entry.type == 'Multi-Title-Manual-Curation')
+                return entry
+        }).filter(show => {return show != null})
+    }
+}
+
+export default Index

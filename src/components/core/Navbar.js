@@ -35,7 +35,7 @@ const Navbar = props =>
         height='50px'
         color='#480E87'
     >
-        <NavLogo>Salam App</NavLogo>
+        <NavLogo>myFlix</NavLogo>
         <Box mx='auto' />
         <Navlink href='#about' ml={2} px={3}>How</Navlink>
         <Navlink href='#readmore' ml={2} px={3}>Testimoni</Navlink>

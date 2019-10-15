@@ -21,7 +21,7 @@ const Handshake = styled(faRegular.Handshake)`
 const Header = props =>
     <CustomContainer 
         bleed={true}
-        height={['200px','300px']}
+        height={['100px','200px']}
         flexDirection='column'
         color='white'
         px={2}
@@ -39,15 +39,14 @@ const Header = props =>
                     flexDirection='column'
                     mt={4}
                 >
-                    <Text>Welcome to Salam App! </Text><br />
+                    <Text>Welcome to myFlix!</Text><br />
                     <Heading 
                         as='h1'
                         fontFamily='nunito'
                         letterSpacing='1px'
                     >
-                        Let's 'bersalaman' to get closer!
+                        Let's browse the list!
                     </Heading>
-                    <CtaButton>Let's Jom!</CtaButton>
                 </Flex>
                 <Box>
                     <Handshake size='170' />
