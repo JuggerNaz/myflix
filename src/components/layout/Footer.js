@@ -42,7 +42,7 @@ const Footer = props =>
                 flexDirection='column'
             >
                 <StyledFooterItemHeading>
-                    SalamApp
+                    myFlix
                 </StyledFooterItemHeading>
                 <Text
                     fontSize='12px'
@@ -57,10 +57,7 @@ const Footer = props =>
                     Contact
                 </StyledFooterItemHeading>
                 <StyledFooterItemContent>
-                    assalam@salamapp.com
-                </StyledFooterItemContent>
-                <StyledFooterItemContent>
-                    No. 123, Jalan 123, Taman Perindustrian Test, 151515 Negeri Baharu
+                    nazrul.muhaimin@gmail.com
                 </StyledFooterItemContent>
             </StyledFooterItem>
             <Flex mx='auto' ></Flex>
@@ -71,10 +68,7 @@ const Footer = props =>
                     Things
                 </StyledFooterItemHeading>
                 <StyledFooterItemContent>
-                    Jemaah
-                </StyledFooterItemContent>
-                <StyledFooterItemContent>
-                    Usrah
+                    myFlix
                 </StyledFooterItemContent>
             </StyledFooterItem>
             <StyledFooterItem

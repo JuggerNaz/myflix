@@ -37,14 +37,7 @@ const Navbar = props =>
     >
         <NavLogo>myFlix</NavLogo>
         <Box mx='auto' />
-        <Navlink href='#about' ml={2} px={3}>How</Navlink>
-        <Navlink href='#readmore' ml={2} px={3}>Testimoni</Navlink>
-        <Button>
-            Login
-        </Button>
-        <Button>
-            Register
-        </Button>
+        <Navlink href='/' ml={2} px={3}>Home</Navlink>
     </NavBarContainer>
 
 export default Navbar

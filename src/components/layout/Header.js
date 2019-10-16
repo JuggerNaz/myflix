@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Box, Heading, Text } from 'rebass'
+import { Flex, Box, Heading, Text, Image } from 'rebass'
 import styled from 'styled-components'
 import * as faRegular from 'styled-icons/fa-regular/'
 
@@ -21,7 +21,7 @@ const Handshake = styled(faRegular.Handshake)`
 const Header = props =>
     <CustomContainer 
         bleed={true}
-        height={['100px','200px']}
+        height={['150px','250px']}
         flexDirection='column'
         color='white'
         px={2}
@@ -39,18 +39,39 @@ const Header = props =>
                     flexDirection='column'
                     mt={4}
                 >
-                    <Text>Welcome to myFlix!</Text><br />
-                    <Heading 
-                        as='h1'
-                        fontFamily='nunito'
-                        letterSpacing='1px'
-                    >
-                        Let's browse the list!
-                    </Heading>
+                    {
+                        props.bgImage ?
+                            <Image src={props.bgImage} />
+                            :
+                        <React.Fragment>
+                                <Text>Welcome to myFlix!</Text><br />
+                                    <Heading
+                                        as='h1'
+                                        fontFamily='nunito'
+                                        letterSpacing='1px'
+                                    >
+                                        Let's browse the list!
+                                </Heading>
+                        </React.Fragment>
+                    }
                 </Flex>
-                <Box>
-                    <Handshake size='170' />
-                </Box>
+                <Flex
+                    justifyContent='center'
+                    flexDirection='column'
+                >
+                    {
+                        props.title ?
+                            <Text
+                                fontFamily='nunito'
+                                fontSize='18px'
+                                fontWeight='700'
+                                mb={2}
+                                letterSpacing={1}
+                            >{props.title}</Text>
+                        :
+                            <></>   
+                    }
+                </Flex>
             </Container>
         </Container>
     </CustomContainer>
